@@ -25,7 +25,7 @@ func HandleTripPreview(w http.ResponseWriter, r *http.Request) {
 	jsonBody, _ := json.Marshal(reqBody)
 	reader := bytes.NewReader(jsonBody)
 
-	resp, err := http.Post("http://trip-service:8083/preview", "imye/jpeg", reader)
+	resp, err := http.Post("http://trip-service:8083/preview", "image/jpeg", reader)
 	if err != nil {
 		log.Println(err)
 		return

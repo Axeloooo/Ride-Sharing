@@ -21,7 +21,9 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("POST /trip/preview", HandleTripPreview)
+	mux.HandleFunc("POST /trip/preview", enableCORS(HandleTripPreview))
+	mux.HandleFunc("/ws/drivers", enableCORS(HandleDriversWebSocket))
+	mux.HandleFunc("ws/riders", enableCORS(HandleRidersWebSocket))
 
 	server := &http.Server{
 		Addr:    httpAddr,
@@ -40,7 +42,7 @@ func main() {
 
 	select {
 	case err := <-serverErrors:
-		log.Printf("Error strting the server: %v", err)
+		log.Printf("Error starting the server: %v", err)
 	case sig := <-shutdown:
 		log.Printf("Server is shutting down due to %v signal", sig)
 
