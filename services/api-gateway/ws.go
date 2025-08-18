@@ -82,7 +82,7 @@ func HandleDriversWebSocket(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err := conn.WriteJSON(msg); err != nil {
-		log.Printf("Error sneding message: %v", err)
+		log.Printf("Error sending message: %v", err)
 		return
 	}
 
