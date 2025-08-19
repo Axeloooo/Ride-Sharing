@@ -550,7 +550,7 @@ type TripDriver struct {
 	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name           string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	ProfilePicture string                 `protobuf:"bytes,3,opt,name=profilePicture,proto3" json:"profilePicture,omitempty"`
-	CarePlate      string                 `protobuf:"bytes,4,opt,name=carePlate,proto3" json:"carePlate,omitempty"`
+	CarPlate       string                 `protobuf:"bytes,4,opt,name=carPlate,proto3" json:"carPlate,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -606,9 +606,9 @@ func (x *TripDriver) GetProfilePicture() string {
 	return ""
 }
 
-func (x *TripDriver) GetCarePlate() string {
+func (x *TripDriver) GetCarPlate() string {
 	if x != nil {
-		return x.CarePlate
+		return x.CarPlate
 	}
 	return ""
 }
@@ -655,13 +655,13 @@ const file_trip_proto_rawDesc = "" +
 	"\x05route\x18\x03 \x01(\v2\v.trip.RouteR\x05route\x12\x16\n" +
 	"\x06status\x18\x04 \x01(\tR\x06status\x12\x16\n" +
 	"\x06userID\x18\x05 \x01(\tR\x06userID\x12(\n" +
-	"\x06driver\x18\x06 \x01(\v2\x10.trip.TripDriverR\x06driver\"v\n" +
+	"\x06driver\x18\x06 \x01(\v2\x10.trip.TripDriverR\x06driver\"t\n" +
 	"\n" +
 	"TripDriver\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12&\n" +
-	"\x0eprofilePicture\x18\x03 \x01(\tR\x0eprofilePicture\x12\x1c\n" +
-	"\tcarePlate\x18\x04 \x01(\tR\tcarePlate2\x92\x01\n" +
+	"\x0eprofilePicture\x18\x03 \x01(\tR\x0eprofilePicture\x12\x1a\n" +
+	"\bcarPlate\x18\x04 \x01(\tR\bcarPlate2\x92\x01\n" +
 	"\vTripService\x12B\n" +
 	"\vPreviewTrip\x12\x18.trip.PreviewTripRequest\x1a\x19.trip.PreviewTripResponse\x12?\n" +
 	"\n" +

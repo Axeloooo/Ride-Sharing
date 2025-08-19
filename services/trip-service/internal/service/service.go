@@ -90,7 +90,7 @@ func (s *service) GenerateTripFares(ctx context.Context, rideFares []*domain.Rid
 		}
 
 		if err := s.repo.SaveRideFare(ctx, fare); err != nil {
-			return nil, fmt.Errorf("failes to save trip fare: %w", err)
+			return nil, fmt.Errorf("failed to save trip fare: %w", err)
 		}
 
 		fares[i] = fare

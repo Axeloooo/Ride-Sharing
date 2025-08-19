@@ -65,5 +65,5 @@ message TripDriver {
     string id = 1;
     string name = 2;
     string profilePicture = 3;
-    string carePlate = 4;
+    string carPlate = 4;
 }

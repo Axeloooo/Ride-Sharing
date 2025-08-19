@@ -37,7 +37,7 @@ func (h *grpcHandler) CreateTrip(ctx context.Context, r *pb.CreateTripRequest) (
 
 	trip, err := h.service.CreateTrip(ctx, rideFare)
 	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failes to create the trip: %v", err)
+		return nil, status.Errorf(codes.Internal, "failed to create the trip: %v", err)
 	}
 
 	// implement async communication with rabbitmq
