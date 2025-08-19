@@ -20,7 +20,7 @@ func (p *previewTripRequest) toProto() *pb.PreviewTripRequest {
 		},
 		EndLocation: &pb.Coordinate{
 			Latitude:  p.Destination.Latitude,
-			Longitude: p.Destination.Latitude,
+			Longitude: p.Destination.Longitude,
 		},
 	}
 }
