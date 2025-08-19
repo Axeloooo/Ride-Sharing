@@ -17,7 +17,7 @@ type grpcHandler struct {
 	service domain.TripService
 }
 
-func NewGRPCHandler(server *grpc.Server, service domain.TripService) *grpcHandler {
+func NewGrpcHandler(server *grpc.Server, service domain.TripService) *grpcHandler {
 	handler := &grpcHandler{
 		service: service,
 	}
