@@ -25,8 +25,8 @@ func handleTripStart(w http.ResponseWriter, r *http.Request) {
 	trip, err := tripService.Client.CreateTrip(r.Context(), reqBody.toProto())
 
 	if err != nil {
-		log.Printf("Failed to preview a trip: %v", err)
-		http.Error(w, "failed to preview trip", http.StatusInternalServerError)
+		log.Printf("Failed to start a trip: %v", err)
+		http.Error(w, "failed to start trip", http.StatusInternalServerError)
 		return
 	}
 
