@@ -66,7 +66,7 @@ func (r *RabbitMQ) ConsumeMessage(queueName string, handler MessageHandler) erro
 		nil,       // args
 	)
 	if err != nil {
-		return nil
+		return fmt.Errorf("failed to consume from queue %s: %v", queueName, err)
 	}
 
 	ctx := context.Background()
@@ -152,7 +152,7 @@ func (r *RabbitMQ) declareAndBindQueue(queueName string, messageTypes []string, 
 		nil,       // arguments
 	)
 	if err != nil {
-		log.Fatal(err)
+		return fmt.Errorf("failed to declare queue %s: %v", queueName, err)
 	}
 
 	for _, msg := range messageTypes {

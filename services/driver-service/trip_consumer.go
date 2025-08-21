@@ -64,7 +64,8 @@ func (c *tripEventConsumer) handleFindAndNotifyDrivers(ctx context.Context, payl
 	suitableDriverID := suitableIDs[0]
 	marshalledEvent, err := json.Marshal(suitableDriverID)
 	if err != nil {
-		return nil
+		log.Printf("Failed to marshal suitableDriverID: %v", err)
+		return err
 	}
 
 	if err := c.rabbitmq.PublishMessage(ctx, contracts.DriverCmdTripRequest, contracts.AmqpMessage{
