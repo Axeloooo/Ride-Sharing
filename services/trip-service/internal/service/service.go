@@ -138,19 +138,19 @@ func getBaseFares() []*domain.RideFareModel {
 	return []*domain.RideFareModel{
 		{
 			PackageSlug:       "sedan",
-			TotalPriceInCents: 200,
+			TotalPriceInCents: 100,
 		},
 		{
 			PackageSlug:       "suv",
-			TotalPriceInCents: 300,
+			TotalPriceInCents: 200,
 		},
 		{
 			PackageSlug:       "van",
-			TotalPriceInCents: 400,
+			TotalPriceInCents: 300,
 		},
 		{
 			PackageSlug:       "luxury",
-			TotalPriceInCents: 500,
+			TotalPriceInCents: 400,
 		},
 	}
 }

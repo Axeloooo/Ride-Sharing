@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: driver-service
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: driver-service
@@ -24,6 +24,13 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "125m"
+          env:
+            - name: RABBITMQ_URI
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-credentials
+                  key: uri
+
 ---
 apiVersion: v1
 kind: Service
