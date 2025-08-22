@@ -91,7 +91,25 @@ func (c *driverConsumer) handleTripAccepted(ctx context.Context, tripID string, 
 		return err
 	}
 
-	// implement payment
+	marshalledPayload, err := json.Marshal(messaging.PaymentTripResponseData{
+		TripID:   tripID,
+		UserID:   trip.UserId,
+		DriverID: driver.Id,
+		Amount:   trip.RideFare.TotalPriceInCents,
+		Currency: "USD",
+	})
+	if err != nil {
+		return err
+	}
+
+	if err := c.rabbitmq.PublishMessage(ctx, contracts.PaymentCmdCreateSession,
+		contracts.AmqpMessage{
+			OwnerID: trip.UserId,
+			Data:    marshalledPayload,
+		},
+	); err != nil {
+		return err
+	}
 
 	return nil
 }
