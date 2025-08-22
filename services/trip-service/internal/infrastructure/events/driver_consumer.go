@@ -42,7 +42,7 @@ func (c *driverConsumer) Listen() error {
 		switch msg.RoutingKey {
 		case contracts.DriverCmdTripAccept:
 			if err := c.handleTripAccepted(ctx, payload.TripID, payload.Driver); err != nil {
-				log.Printf("Failed to handle the trip accerpt: %v", err)
+				log.Printf("Failed to handle the trip accept: %v", err)
 				return err
 			}
 		case contracts.DriverCmdTripDecline:
@@ -88,7 +88,7 @@ func (c *driverConsumer) handleTripAccepted(ctx context.Context, tripID string, 
 		OwnerID: trip.UserId,
 		Data:    marshalledTrip,
 	}); err != nil {
-		return nil
+		return err
 	}
 
 	// implement payment
@@ -99,7 +99,7 @@ func (c *driverConsumer) handleTripAccepted(ctx context.Context, tripID string, 
 func (c *driverConsumer) handleTripDeclined(ctx context.Context, tripID, riderID string) error {
 	trip, err := c.service.GetTripByID(ctx, tripID)
 	if err != nil {
-		return nil
+		return err
 	}
 
 	newPayload := messaging.TripEventData{
@@ -108,7 +108,7 @@ func (c *driverConsumer) handleTripDeclined(ctx context.Context, tripID, riderID
 
 	marshalledPayload, err := json.Marshal(newPayload)
 	if err != nil {
-		return nil
+		return err
 	}
 
 	if err := c.rabbitmq.PublishMessage(ctx, contracts.TripEventDriverNotInterested, contracts.AmqpMessage{
