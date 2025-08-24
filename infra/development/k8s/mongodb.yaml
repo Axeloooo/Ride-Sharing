@@ -31,11 +31,21 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 10
           env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb
+                  key: username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb
+                  key: password
             - name: MONGODB_URI
               valueFrom:
                 secretKeyRef:
                   name: mongodb
-                  key: MONGODB_URI
+                  key: uri
           volumeMounts:
             - name: mongodb-data
               mountPath: /data/db
