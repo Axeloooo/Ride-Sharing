@@ -37,6 +37,11 @@ spec:
                 configMapKeyRef:
                   name: app-config
                   key: STRIPE_CANCEL_URL
+            - name: JAEGER_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  key: JAEGER_ENDPOINT
+                  name: app-config
             - name: STRIPE_SECRET_KEY
               valueFrom:
                 secretKeyRef:
@@ -47,11 +52,6 @@ spec:
                 secretKeyRef:
                   name: rabbitmq-credentials
                   key: uri
-            - name: JAEGER_ENDPOINT
-              valueFrom:
-                configMapKeyRef:
-                  key: JAEGER_ENDPOINT
-                  name: app-config
 ---
 apiVersion: v1
 kind: Service
