@@ -8,11 +8,11 @@ import (
 )
 
 type RideFareModel struct {
-	ID                primitive.ObjectID
-	UserID            string
-	PackageSlug       string
-	TotalPriceInCents float64
-	Route             *tripTypes.OsrmApiResponse
+	ID                primitive.ObjectID         `bson:"_id,omitempty"`
+	UserID            string                     `bson:"userId"`
+	PackageSlug       string                     `bson:"packageSlug"`
+	TotalPriceInCents float64                    `bson:"totalPriceInCents"`
+	Route             *tripTypes.OsrmApiResponse `bson:"route"`
 }
 
 func (r *RideFareModel) ToProto() *pb.RideFare {

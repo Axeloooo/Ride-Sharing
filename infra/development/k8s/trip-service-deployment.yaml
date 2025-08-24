@@ -25,16 +25,21 @@ spec:
               memory: "128Mi"
               cpu: "200m"
           env:
-            - name: RABBITMQ_URI
-              valueFrom:
-                secretKeyRef:
-                  name: rabbitmq-credentials
-                  key: uri
             - name: JAEGER_ENDPOINT
               valueFrom:
                 configMapKeyRef:
                   key: JAEGER_ENDPOINT
                   name: app-config
+            - name: RABBITMQ_URI
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-credentials
+                  key: uri
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-mongodb
+                  key: uri
 ---
 apiVersion: v1
 kind: Service
